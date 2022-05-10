@@ -3,3 +3,5 @@ docs
 node_modules
 .gitignore
 .prettierrc.json
+.idea
+yarn-error.log
