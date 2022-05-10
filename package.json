@@ -1,6 +1,6 @@
 {
   "name": "polemic",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Publishing tool for online academic content such as tutorials, papers, books and blogs.",
   "author": "Leon van der Grient <leon@devtastic.co>",
   "license": "MIT",
@@ -8,11 +8,6 @@
   "type": "module",
   "bin": {
     "polemic": "./cli/index.ts"
-  },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
   },
   "devDependencies": {
     "@types/configstore": "^5.0.1",
