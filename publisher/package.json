@@ -1,0 +1,36 @@
+{
+  "name": "generated-polemic-project",
+  "description": "Generated Next.js project for a Polemic project",
+  "author": "Polemic Bot <hi@devtastic.co>",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.2",
+    "classnames": "^2.3.1",
+    "gray-matter": "^4.0.3",
+    "next": "12.1.5",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^7.4.3",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-markdown": "^8.0.3",
+    "react-use": "^17.3.2",
+    "rehype-katex": "^6.0.2",
+    "remark-frontmatter": "^4.0.1",
+    "remark-math": "^5.1.1",
+    "remark-parse": "^10.0.1",
+    "tailwindcss": "^3.0.24",
+    "unified": "^10.1.2"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.5",
+    "@types/react-dom": "18.0.1",
+    "eslint": "8.13.0",
+    "eslint-config-next": "12.1.5"
+  }
+}

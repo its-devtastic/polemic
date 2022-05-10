@@ -1,0 +1,7 @@
+demo
+docs
+node_modules
+.gitignore
+.prettierrc.json
+tsconfig.json
+webpack.config.js
