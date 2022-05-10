@@ -6,6 +6,7 @@ import pupa from "pupa";
 import fs from "fs-extra";
 import shelljs from "shelljs";
 import { fileURLToPath } from "url";
+import chalk from "chalk";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -58,7 +59,12 @@ export default async function createCommand(
     `${useYarn ? "yarn" : "npm"} install`,
     { silent: true },
     async () => {
-      spinner.succeed();
+      spinner.succeed("Project has been created!");
+      console.log(chalk.blue(`A new folder named ${name} has been created.`));
+      console.log(
+        chalk.blue(`Inside the project directory run `) +
+          chalk.blue.bold("polemic preview")
+      );
     }
   );
 }

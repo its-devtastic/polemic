@@ -6,7 +6,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import * as R from "ramda";
 import matter from "gray-matter";
 
-const Preview = ({ doc }: { doc: string }) => {
+const Article = ({ doc }: { doc: string }) => {
   const [frontMatter, setFrontMatter] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -18,16 +18,25 @@ const Preview = ({ doc }: { doc: string }) => {
 
   return (
     <div className="flex relative flex-col items-center p-4 tablet:p-12">
-      <div className="w-full max-w-prose prose select-none">
+      <div className="w-full max-w-prose prose prose-lg">
         {!R.isEmpty(frontMatter) && (
           <div className="text-center mb-24 mt-12">
             <h1 className="text-5xl mb-2">{frontMatter.title}</h1>
-            <h2 className="text-2xl text-slate-500 mt-0 mb-12 font-normal italic">
-              {frontMatter.subtitle}
-            </h2>
-            <div className="text-xl text-slate-600 mb-6">
-              {frontMatter.author}
-            </div>
+            {frontMatter.subtitle && (
+              <h2 className="text-2xl text-slate-500 mt-0 mb-12 font-normal italic">
+                {frontMatter.subtitle}
+              </h2>
+            )}
+            {frontMatter.author && (
+              <div className="text-xl text-slate-600 mb-6">
+                {frontMatter.author}
+              </div>
+            )}
+            {frontMatter.date && (
+              <div className="text-xl text-slate-600 mb-6">
+                {frontMatter.date}
+              </div>
+            )}
           </div>
         )}
 
@@ -42,4 +51,4 @@ const Preview = ({ doc }: { doc: string }) => {
   );
 };
 
-export default Preview;
+export default Article;

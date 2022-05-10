@@ -29,6 +29,9 @@ npm install -g polemic
 ## Usage
 
 ### Create
+
+Creates a new Polemic project based on a template
+
 ```shell
 polemic create principia --template=book
 ```
