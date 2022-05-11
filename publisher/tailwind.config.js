@@ -13,5 +13,4 @@ module.exports = {
       laptop: "1024px",
     },
   },
-  plugins: [require("@tailwindcss/typography")],
 };
