@@ -22,15 +22,17 @@
     "ramda": "^0.28.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-markdown": "8.0.3",
     "react-use": "17.3.2",
     "rehype-katex": "6.0.2",
+    "rehype-stringify": "^9.0.3",
     "remark-frontmatter": "4.0.1",
     "remark-images": "^3.1.0",
     "remark-math": "5.1.1",
     "remark-parse": "10.0.1",
+    "remark-rehype": "^10.1.0",
     "tailwindcss": "3.0.24",
-    "unified": "10.1.2"
+    "unified": "10.1.2",
+    "unist-util-visit": "^4.1.0"
   },
   "devDependencies": {
     "@types/ramda": "^0.28.12",

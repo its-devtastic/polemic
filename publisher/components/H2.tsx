@@ -1,8 +1,14 @@
 import React from "react";
 
-const H2: React.FC<{ children: any }> = ({ children }) => {
+import useConfig from "../hooks/useConfig";
+
+const H2: React.FC<any> = ({ node, children, ...props }) => {
+  const config = useConfig();
+
   return (
-    <h2 className="text-2xl font-bold text-slate-800 mb-4 mt-2">{children}</h2>
+    <h2 {...props} className="text-2xl font-bold text-slate-800 mb-4 mt-2">
+      {config.sectionNumbering ? [node.section, children].join(" ") : children}
+    </h2>
   );
 };
 

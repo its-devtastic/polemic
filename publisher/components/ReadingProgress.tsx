@@ -1,32 +1,35 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
-  useEffectOnce,
   useWindowScroll,
   useWindowSize,
   useMouseHovered,
   useHoverDirty,
 } from "react-use";
+import * as R from "ramda";
 
-const ReadingProgress: React.FC = () => {
+const ReadingProgress: React.FC<{ documentHeight: number }> = ({
+  documentHeight,
+}) => {
   const ref = useRef(null);
   const { y } = useWindowScroll();
   const { height: windowHeight } = useWindowSize();
   const { elX, elW } = useMouseHovered(ref, { bound: true, whenHovered: true });
   const isHovering = useHoverDirty(ref);
-  const [documentHeight, setDocumentHeight] = useState(0);
-  const progress: number =
-    documentHeight && (100 * y) / (documentHeight - windowHeight);
-
-  useEffectOnce(() => {
-    setDocumentHeight(window.document.body.getBoundingClientRect().height);
-  });
+  const progress: number = R.pipe(
+    R.min<number>(100),
+    R.max<number>(0),
+    Math.ceil
+  )(documentHeight && (100 * y) / (documentHeight - windowHeight));
 
   return (
     <div
       ref={ref}
       className="w-full fixed left-0 top-0 z-10 bg-slate-200 h-1 hover:h-3 cursor-pointer transition-[height] delay-500 hover:delay-[0ms]"
       onClick={() =>
-        window.scrollTo({ top: ((documentHeight - windowHeight) * elX) / elW })
+        window.scrollTo({
+          top: ((documentHeight - windowHeight) * elX) / elW,
+          behavior: "smooth",
+        })
       }
     >
       <div
