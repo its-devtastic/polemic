@@ -1,7 +1,7 @@
 {
   "name": "polemic",
   "version": "0.1.2",
-  "description": "Publishing tool for online academic content such as tutorials, papers, books and blogs.",
+  "description": "Publishing tool for academic papers, tutorials, books and blogs.",
   "author": "Leon van der Grient <leon@devtastic.co>",
   "license": "MIT",
   "private": false,

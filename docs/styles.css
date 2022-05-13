@@ -1,0 +1,11 @@
+:root {
+    --theme-color: #1D4ED8;
+}
+
+.app-name img {
+    width: 80px;
+}
+
+.cover-main img {
+    width: 120px;
+}

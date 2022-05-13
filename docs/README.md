@@ -1,5 +1,5 @@
 <div align="center">
-<img height="120" src="./docs/_media/logo.png" alt=""/>
+<img height="120" src="./_media/logo.png" alt=""/>
 </div>
 
 <h1 align="center">
@@ -19,7 +19,7 @@ Polemic
   </a>
 </div>
 
-# Polemic
+# Getting started
 
 ## Installation
 ```shell
