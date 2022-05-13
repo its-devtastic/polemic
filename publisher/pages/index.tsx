@@ -6,28 +6,41 @@ import fs from "fs-extra";
 import glob from "glob";
 import { cosmiconfig } from "cosmiconfig";
 import * as R from "ramda";
+import matter from "gray-matter";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkImages from "remark-images";
+import remarkMath from "remark-math";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import rehypeKatex from "rehype-katex";
 
-import { ProjectConfig } from "../types";
+import { ProjectConfig, Document } from "../types";
 import { defaultProjectConfig } from "../helpers/config";
+import { rehypeAddSections } from "../helpers/rehype";
 import Article from "../components/Article";
 import ConfigProvider from "../providers/ConfigProvider";
+import StructureProvider from "../providers/StructureProvider";
 
-const Home: NextPage<{ docs: string[]; config: ProjectConfig }> = ({
-  docs,
-  config,
-}) => {
+const Home: NextPage<{
+  docs: Document[];
+  config: ProjectConfig;
+}> = ({ docs, config }) => {
   return (
-    <ConfigProvider config={config}>
-      <div className="font-serif text-base antialiased">
-        <Head>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-        </Head>
-        {config.type === "article" && docs[0] && <Article doc={docs[0]} />}
-      </div>
-    </ConfigProvider>
+    <StructureProvider>
+      <ConfigProvider config={config}>
+        <div className="font-serif text-base antialiased">
+          <Head>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
+          {config.type === "article" && docs[0] && <Article doc={docs[0]} />}
+        </div>
+      </ConfigProvider>
+    </StructureProvider>
   );
 };
 
@@ -46,14 +59,43 @@ export async function getStaticProps() {
     dot: false,
   });
 
-  const docs = files.map((file) => {
-    const filePath = path.resolve(projectDir, file);
+  const docs = files
+    .map((file) => {
+      const filePath = path.resolve(projectDir, file);
 
-    return fs.readFileSync(filePath, { encoding: "utf-8" });
-  });
+      return fs.readFileSync(filePath, { encoding: "utf-8" });
+    })
+    .map((doc) => {
+      let hast: any;
 
+      const processor = unified()
+        .use(remarkParse)
+        .use(remarkImages)
+        .use(remarkMath)
+        .use(remarkFrontmatter)
+        .use(remarkRehype)
+        .use(rehypeKatex)
+        .use(rehypeAddSections)
+        .use(() => (tree) => {
+          // TODO There must be a better way
+          hast = tree;
+        })
+        .use(rehypeStringify);
+
+      const mdast = processor.parse(doc);
+
+      processor.processSync(doc);
+
+      return {
+        md: doc,
+        frontMatter: matter(doc).data,
+        hast,
+        mdast,
+      };
+    });
+
+  // Try to find a Polemic config file
   const explorer = cosmiconfig("polemic");
-
   const result = await explorer.search(projectDir);
 
   return {
