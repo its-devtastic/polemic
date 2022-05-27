@@ -17,6 +17,7 @@ export interface ProjectConfig {
 }
 
 export interface Tree {
+  id: string;
   type: string;
   tagName: string;
   section: string;

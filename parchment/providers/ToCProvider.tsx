@@ -22,7 +22,7 @@ export default function ToCProvider({ children }: any) {
     () =>
       activeDocument?.hast.children.filter(
         R.where({
-          tagName: R.includes(R.__, ["h1", "h2", "h3", "h4", "h5", "h6"]),
+          tagName: R.includes(R.__, ["h2", "h3", "h4", "h5", "h6"]),
         })
       ) ?? [],
     [activeDocument]

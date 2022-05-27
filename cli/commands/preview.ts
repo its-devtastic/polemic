@@ -19,5 +19,5 @@ export default async function previewCommand() {
 
   shelljs.cd(path.resolve(projectDir, ".polemic", "parchment"));
 
-  shelljs.exec(`${useYarn ? "yarn" : "npm"} run dev`);
+  shelljs.exec(`PROJECT_DIR=${projectDir} ${useYarn ? "yarn" : "npm"} run dev`);
 }

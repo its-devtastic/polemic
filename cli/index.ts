@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import createCommand from "./commands/create.js";
 import exportCommand from "./commands/export.js";
 import previewCommand from "./commands/preview.js";
+import updateCommand from "./commands/update.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -39,5 +40,10 @@ program
   .command("preview")
   .description("Preview your Polemic project.")
   .action(previewCommand);
+
+program
+  .command("update")
+  .description("Update your Polemic project.")
+  .action(updateCommand);
 
 program.parse();

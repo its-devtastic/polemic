@@ -23,7 +23,7 @@ import rehypeSlug from "rehype-slug";
 
 import { ProjectConfig, Document } from "../types";
 import { defaultProjectConfig } from "../helpers/config";
-import { rehypeAddSections } from "../helpers/rehype";
+import { rehypeAddNodeId, rehypeAddSections } from "../helpers/rehype";
 
 import Article from "../components/Article";
 import TableOfContents from "../components/TableOfContents";
@@ -95,6 +95,7 @@ export async function getStaticProps() {
         .use(rehypeKatex)
         .use(rehypeSlug)
         .use(rehypeAddSections)
+        .use(rehypeAddNodeId)
         .use(() => (tree) => {
           // TODO There must be a better way
           hast = tree;

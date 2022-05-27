@@ -1,4 +1,5 @@
 import { visit } from "unist-util-visit";
+import { nanoid } from "nanoid";
 
 export const rehypeAddSections =
   (): any =>
@@ -40,6 +41,16 @@ export const rehypeAddSections =
         node.section = `${headingIndex}.${sectionIndex}.${subSectionIndex}.${subSubSectionIndex}.${subSubSubSectionIndex}`;
         subSubSubSectionIndex++;
       }
+    });
+
+    return tree;
+  };
+
+export const rehypeAddNodeId =
+  (): any =>
+  (tree: any): any => {
+    visit(tree, (node) => {
+      node.id = nanoid();
     });
 
     return tree;

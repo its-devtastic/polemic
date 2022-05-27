@@ -1,5 +1,6 @@
 import React from "react";
 import * as R from "ramda";
+import camelcase from "camelcase";
 
 import { Tree } from "../types";
 import Heading from "./Heading";
@@ -7,6 +8,12 @@ import P from "./P";
 
 const COMPONENTS: Record<string, React.FC<any>> = {
   p: P,
+  h1: () => (
+    <div className="font-mono select-none bg-red-50 text-red-600 rounded-sm px-2 py-1 font-sans text-sm">
+      👮 Level 1 headings (<code>#</code>) are not allowed here. Start at level
+      2 (<code>##</code>) instead.
+    </div>
+  ),
   h2: Heading,
   h3: Heading,
   h4: Heading,
@@ -22,7 +29,7 @@ function styleStringToObject(style: string): Record<string, string> {
     .reduce(
       (result, value) => ({
         ...result,
-        [value.split(":")[0]?.trim()]: value.split(":")[1]?.trim(),
+        [camelcase(value.split(":")[0]?.trim())]: value.split(":")[1]?.trim(),
       }),
       {}
     );
@@ -37,6 +44,7 @@ function treeToReact(tree: Tree): any {
     : React.createElement(
         COMPONENTS[tree.tagName] || tree.tagName,
         {
+          key: tree.id,
           node: tree,
           ...R.evolve({
             style: styleStringToObject,
