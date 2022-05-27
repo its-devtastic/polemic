@@ -8,7 +8,7 @@ export default async function exportCommand() {
   const projectDir = process.cwd();
   const useYarn = Boolean(shelljs.which("yarn"));
 
-  shelljs.cd(path.resolve(projectDir, ".polemic", "publisher"));
+  shelljs.cd(path.resolve(projectDir, ".polemic", "parchment"));
   shelljs.exec(
     `${useYarn ? "yarn" : "npm"} run export`,
     {

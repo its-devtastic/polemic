@@ -17,7 +17,7 @@ export default async function previewCommand() {
 
   const useYarn = Boolean(shelljs.which("yarn"));
 
-  shelljs.cd(path.resolve(projectDir, ".polemic", "publisher"));
+  shelljs.cd(path.resolve(projectDir, ".polemic", "parchment"));
 
   shelljs.exec(`${useYarn ? "yarn" : "npm"} run dev`);
 }

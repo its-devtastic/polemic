@@ -44,17 +44,17 @@ export default async function createCommand(
   }
 
   // Create directories
-  fs.ensureDirSync(path.resolve(destination, ".polemic", "publisher"));
+  fs.ensureDirSync(path.resolve(destination, ".polemic", "parchment"));
 
-  // Copy publisher
+  // Copy Parchment project
   await cpy(
-    path.resolve(__dirname, `../../publisher/**`),
-    path.resolve(destination, ".polemic", "publisher")
+    path.resolve(__dirname, `../../parchment/**`),
+    path.resolve(destination, ".polemic", "parchment")
   );
 
   const useYarn = Boolean(shelljs.which("yarn"));
 
-  shelljs.cd(path.resolve(destination, ".polemic", "publisher"));
+  shelljs.cd(path.resolve(destination, ".polemic", "parchment"));
   shelljs.exec(
     `${useYarn ? "yarn" : "npm"} install`,
     { silent: true },
