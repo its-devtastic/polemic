@@ -2,16 +2,16 @@ import React from "react";
 import * as R from "ramda";
 
 import { Tree } from "../types";
-import H2 from "./H2";
-import H3 from "./H3";
-import H4 from "./H4";
+import Heading from "./Heading";
 import P from "./P";
 
 const COMPONENTS: Record<string, React.FC<any>> = {
   p: P,
-  h2: H2,
-  h3: H3,
-  h4: H4,
+  h2: Heading,
+  h3: Heading,
+  h4: Heading,
+  h5: Heading,
+  h6: Heading,
 };
 
 // Converts a style string to an object to comply with React
@@ -47,7 +47,7 @@ function treeToReact(tree: Tree): any {
 }
 
 const Renderer: React.FC<{ hast: Tree }> = ({ hast }) => {
-  return <div>{treeToReact(hast)}</div>;
+  return treeToReact(hast);
 };
 
 export default Renderer;

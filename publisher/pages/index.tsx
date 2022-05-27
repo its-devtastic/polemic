@@ -8,39 +8,57 @@ import { cosmiconfig } from "cosmiconfig";
 import * as R from "ramda";
 import matter from "gray-matter";
 import { unified } from "unified";
+
+// Remark plugins
 import remarkParse from "remark-parse";
 import remarkImages from "remark-images";
 import remarkMath from "remark-math";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkRehype from "remark-rehype";
+
+// Rehype plugins
 import rehypeStringify from "rehype-stringify";
 import rehypeKatex from "rehype-katex";
+import rehypeSlug from "rehype-slug";
 
 import { ProjectConfig, Document } from "../types";
 import { defaultProjectConfig } from "../helpers/config";
 import { rehypeAddSections } from "../helpers/rehype";
+
 import Article from "../components/Article";
+import TableOfContents from "../components/TableOfContents";
+
 import ConfigProvider from "../providers/ConfigProvider";
-import StructureProvider from "../providers/StructureProvider";
+import DocumentProvider from "../providers/DocumentProvider";
+import ToCProvider from "../providers/ToCProvider";
 
 const Home: NextPage<{
   docs: Document[];
   config: ProjectConfig;
 }> = ({ docs, config }) => {
   return (
-    <StructureProvider>
+    <DocumentProvider docs={docs}>
       <ConfigProvider config={config}>
-        <div className="font-serif text-base antialiased">
-          <Head>
-            <meta
-              name="viewport"
-              content="initial-scale=1.0, width=device-width"
-            />
-          </Head>
-          {config.type === "article" && docs[0] && <Article doc={docs[0]} />}
-        </div>
+        <ToCProvider>
+          <div className="font-sans text-base antialiased">
+            <Head>
+              <meta
+                name="viewport"
+                content="initial-scale=1.0, width=device-width"
+              />
+            </Head>
+            <div className="flex w-full items-stretch">
+              <div className="p-4 fixed w-[240px] h-full bg-white z-10 border-r border-slate-200 print:hidden hidden tablet:block">
+                {config.tableOfContents && <TableOfContents />}
+              </div>
+              <div className="flex-1 tablet:pl-[240px]">
+                <Article />
+              </div>
+            </div>
+          </div>
+        </ToCProvider>
       </ConfigProvider>
-    </StructureProvider>
+    </DocumentProvider>
   );
 };
 
@@ -75,6 +93,7 @@ export async function getStaticProps() {
         .use(remarkFrontmatter)
         .use(remarkRehype)
         .use(rehypeKatex)
+        .use(rehypeSlug)
         .use(rehypeAddSections)
         .use(() => (tree) => {
           // TODO There must be a better way
