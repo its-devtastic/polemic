@@ -1,23 +1,25 @@
 import * as R from "ramda";
 import Head from "next/head";
-
-import { Document } from "../types";
-import ReadingProgress from "./ReadingProgress";
-import Renderer from "./Renderer";
 import { useMeasure } from "react-use";
 
-const Article = ({ doc }: { doc: Document }) => {
-  const [ref, { height, top }] = useMeasure();
-  const { frontMatter } = doc;
+import useDocument from "../hooks/useDocument";
 
-  return (
+import ReadingProgress from "./ReadingProgress";
+import Renderer from "./Renderer";
+
+const Article = () => {
+  const { activeDocument: doc } = useDocument();
+  const [ref, { height, top }] = useMeasure();
+  const frontMatter = doc?.frontMatter;
+
+  return doc && frontMatter ? (
     <>
       <Head>
         <title>{frontMatter.title}</title>
       </Head>
       <ReadingProgress documentHeight={height + top} />
       <div ref={ref as any}>
-        <div className="flex relative flex-col items-center p-4 tablet:p-12 scroll-smooth">
+        <div className="font-serif flex relative flex-col items-center p-4 tablet:p-12">
           <div className="w-full max-w-prose">
             {!R.isEmpty(frontMatter) && (
               <div className="text-center mb-24 mt-12">
@@ -47,6 +49,10 @@ const Article = ({ doc }: { doc: Document }) => {
         </div>
       </div>
     </>
+  ) : (
+    <div className="flex items-center justify-center h-screen">
+      No documents were found
+    </div>
   );
 };
 

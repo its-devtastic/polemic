@@ -13,6 +13,7 @@ export interface Position {
 export interface ProjectConfig {
   type: ProjectType;
   sectionNumbering: boolean;
+  tableOfContents: boolean;
 }
 
 export interface Tree {

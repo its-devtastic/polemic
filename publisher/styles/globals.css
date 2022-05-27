@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    @apply scroll-smooth;
+}
+
 @font-face {
     font-family: "STIX Two Text";
     src: url("/fonts/STIXTwoText-Regular.ttf");
