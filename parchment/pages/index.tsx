@@ -24,6 +24,7 @@ import rehypeSlug from "rehype-slug";
 import { ProjectConfig, Document } from "../types";
 import { defaultProjectConfig } from "../helpers/config";
 import { rehypeAddNodeId, rehypeAddSections } from "../helpers/rehype";
+import { remarkLocalAssets } from "../helpers/remark";
 
 import Article from "../components/Article";
 import TableOfContents from "../components/TableOfContents";
@@ -91,6 +92,15 @@ export async function getStaticProps() {
         .use(remarkImages)
         .use(remarkMath)
         .use(remarkFrontmatter)
+        .use(remarkLocalAssets, [
+          {
+            projectDir,
+            assetDir: path.resolve(
+              projectDir,
+              ".polemic/parchment/public/assets"
+            ),
+          },
+        ])
         .use(remarkRehype)
         .use(rehypeKatex)
         .use(rehypeSlug)
