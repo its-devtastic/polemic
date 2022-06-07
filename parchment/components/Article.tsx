@@ -20,7 +20,7 @@ const Article = () => {
       <ReadingProgress documentHeight={height + top} />
       <div ref={ref as any}>
         <div className="font-serif flex relative flex-col items-center p-4 tablet:p-12">
-          <div className="w-full max-w-prose">
+          <article className="w-full max-w-prose">
             {!R.isEmpty(frontMatter) && (
               <div className="text-center mb-24 mt-12">
                 <h1 className="text-5xl mb-2 font-bold text-slate-900">
@@ -45,7 +45,7 @@ const Article = () => {
             )}
 
             <Renderer hast={doc.hast} />
-          </div>
+          </article>
         </div>
       </div>
     </>

@@ -7,6 +7,9 @@ import Heading from "./Heading";
 import P from "./P";
 import Img from "./Img";
 import Video from "./Video";
+import A from "./A";
+import Ol from "./Ol";
+import Li from "./Li";
 
 const COMPONENTS: Record<string, React.FC<any>> = {
   p: P,
@@ -21,6 +24,9 @@ const COMPONENTS: Record<string, React.FC<any>> = {
   h4: Heading,
   h5: Heading,
   h6: Heading,
+  a: A,
+  ol: Ol,
+  li: Li,
   img: Img,
   video: Video,
 };

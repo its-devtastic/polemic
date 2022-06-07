@@ -27,6 +27,7 @@ import {
   rehypeAddNodeId,
   rehypeAddSections,
   rehypeAssets,
+  rehypeParagraphs,
   rehypeVideos,
 } from "../helpers/rehype";
 import { remarkLocalAssets, remarkImages } from "../helpers/remark";
@@ -107,7 +108,9 @@ export async function getStaticProps() {
             ),
           },
         ])
-        .use(remarkRehype)
+        .use(remarkRehype, {
+          clobberPrefix: "",
+        })
         .use(rehypeVideos)
         .use(rehypeKatex)
         .use(rehypeSlug)
@@ -118,6 +121,7 @@ export async function getStaticProps() {
           // TODO There must be a better way
           hast = tree;
         })
+        .use(rehypeParagraphs)
         .use(rehypeStringify);
 
       const mdast = processor.parse(doc);

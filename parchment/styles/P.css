@@ -1,0 +1,7 @@
+article > .paragraph {
+    @apply text-xl;
+    @apply mb-8;
+    @apply mt-4;
+    @apply text-slate-700;
+    @apply leading-relaxed;
+}
