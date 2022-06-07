@@ -5,3 +5,4 @@ node_modules
 .prettierrc.json
 .idea
 yarn-error.log
+parchment/public/assets/
