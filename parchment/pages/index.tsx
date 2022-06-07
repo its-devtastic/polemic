@@ -11,6 +11,7 @@ import { unified } from "unified";
 
 // Remark plugins
 import remarkParse from "remark-parse";
+import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkRehype from "remark-rehype";
@@ -26,6 +27,7 @@ import {
   rehypeAddNodeId,
   rehypeAddSections,
   rehypeAssets,
+  rehypeVideos,
 } from "../helpers/rehype";
 import { remarkLocalAssets, remarkImages } from "../helpers/remark";
 
@@ -92,6 +94,7 @@ export async function getStaticProps() {
 
       const processor = unified()
         .use(remarkParse)
+        .use(remarkGfm)
         .use(remarkImages)
         .use(remarkMath)
         .use(remarkFrontmatter)
@@ -105,6 +108,7 @@ export async function getStaticProps() {
           },
         ])
         .use(remarkRehype)
+        .use(rehypeVideos)
         .use(rehypeKatex)
         .use(rehypeSlug)
         .use(rehypeAssets)
