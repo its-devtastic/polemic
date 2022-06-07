@@ -1,4 +1,5 @@
 import { visit } from "unist-util-visit";
+import { visitParents } from "unist-util-visit-parents";
 import { nanoid } from "nanoid";
 
 export const rehypeAddSections =
@@ -11,7 +12,7 @@ export const rehypeAddSections =
     let subSubSubSectionIndex = 1;
 
     visit(tree, (node) => {
-      if (node.tagName === "h2") {
+      if (node.tagName === "h2" && node.properties?.id !== "footnote-label") {
         node.section = headingIndex;
         sectionIndex = 1;
         subSectionIndex = 1;
@@ -56,7 +57,7 @@ export const rehypeAddNodeId =
     return tree;
   };
 
-// Rehype local assets support
+// Rehype asset counter
 export const rehypeAssets =
   (): any =>
   (tree: any): Promise<any> => {
@@ -85,6 +86,19 @@ export const rehypeVideos =
 
       if (node.tagName === "img" && isVideoExt(src)) {
         node.tagName = "video";
+      }
+    });
+
+    return tree;
+  };
+
+// Rehype remove improper paragraphs
+export const rehypeParagraphs =
+  (): any =>
+  (tree: any): any => {
+    visitParents(tree, "element", (node, parents) => {
+      if (node.tagName === "p" && parents[parents.length - 1].type !== "root") {
+        node.tagName = "span";
       }
     });
 
