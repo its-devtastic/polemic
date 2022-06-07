@@ -55,3 +55,18 @@ export const rehypeAddNodeId =
 
     return tree;
   };
+
+// Remark local assets support
+export const rehypeAssets =
+  (): any =>
+  (tree: any): Promise<any> => {
+    let counter = 1;
+    visit(tree, (node) => {
+      if (["img"].includes(node.tagName)) {
+        node.index = counter;
+        counter = counter + 1;
+      }
+    });
+
+    return tree;
+  };

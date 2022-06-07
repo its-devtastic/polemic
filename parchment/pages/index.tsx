@@ -11,7 +11,6 @@ import { unified } from "unified";
 
 // Remark plugins
 import remarkParse from "remark-parse";
-import remarkImages from "remark-images";
 import remarkMath from "remark-math";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkRehype from "remark-rehype";
@@ -23,8 +22,12 @@ import rehypeSlug from "rehype-slug";
 
 import { ProjectConfig, Document } from "../types";
 import { defaultProjectConfig } from "../helpers/config";
-import { rehypeAddNodeId, rehypeAddSections } from "../helpers/rehype";
-import { remarkLocalAssets } from "../helpers/remark";
+import {
+  rehypeAddNodeId,
+  rehypeAddSections,
+  rehypeAssets,
+} from "../helpers/rehype";
+import { remarkLocalAssets, remarkImages } from "../helpers/remark";
 
 import Article from "../components/Article";
 import TableOfContents from "../components/TableOfContents";
@@ -104,6 +107,7 @@ export async function getStaticProps() {
         .use(remarkRehype)
         .use(rehypeKatex)
         .use(rehypeSlug)
+        .use(rehypeAssets)
         .use(rehypeAddSections)
         .use(rehypeAddNodeId)
         .use(() => (tree) => {
