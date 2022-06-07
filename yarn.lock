@@ -98,15 +98,15 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.31.tgz#a5bb84ecfa27eec5e1c802c6bbf8139bdb163a5d"
   integrity sha512-AR0x5HbXGqkEx9CadRH3EBYx/VkiUgZIhP4wvPn/+5KIsgpNoyFaRlVe0Zlx9gRtg8fA06a9tskE2MSN7TcG4Q==
 
-"@types/node@^17.0.35":
-  version "17.0.35"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.35.tgz#635b7586086d51fb40de0a2ec9d1014a5283ba4a"
-  integrity sha512-vu1SrqBjbbZ3J6vwY17jBs8Sr/BKA+/a/WtjRG+whKg1iuLFOosq872EXS0eXWILdO36DHQQeku/ZcL6hz2fpg==
+"@types/node@^17.0.40":
+  version "17.0.40"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.40.tgz#76ee88ae03650de8064a6cf75b8d95f9f4a16090"
+  integrity sha512-UXdBxNGqTMtm7hCwh9HtncFVLrXoqA3oJW30j6XWp5BH/wu3mVeaxo7cq5benFdBw34HB3XDT2TRPI7rXZ+mDg==
 
-"@types/ramda@^0.28.13":
-  version "0.28.13"
-  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.28.13.tgz#fbd4edddcdc39cba789efa6c45c41f8480882c4f"
-  integrity sha512-ugnamgmaRzB6yontWxKh9kVstbO5gbdNGcbmcZI0U4d9S0fmN/VYCbxVm4crMAkRvMyfO4u+VIjH/G2Fyk04aA==
+"@types/ramda@^0.28.14":
+  version "0.28.14"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.28.14.tgz#66412478361cfce6a5f3e4a6da8a33e796fa3866"
+  integrity sha512-hLgAeKxS5MpIEROaIRHscFqWf+V04CB+A0Kq+OjnTs1fEGHXEs4aeOhXIRovAPe6PfWYKHEwEkVIYWf98OjxnA==
   dependencies:
     ts-toolbelt "^6.15.1"
 
@@ -229,10 +229,10 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
-commander@^9.2.0:
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-9.2.0.tgz#6e21014b2ed90d8b7c9647230d8b7a94a4a419a9"
-  integrity sha512-e2i4wANQiSXgnrBlIatyHtP1odfUp0BbV5Y5nEGbxtIrStkEOAAzCUirvLBNXHLr7kwLvJl6V+4V3XV9x7Wd9w==
+commander@^9.3.0:
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-9.3.0.tgz#f619114a5a2d2054e0d9ff1b31d5ccf89255e26b"
+  integrity sha512-hv95iU5uXPbK83mjrJKuZyFM/LBAoCV/XhVGkS5Je6tl7sxr6A0ITMw5WoRV46/UaJ46Nllm3Xt7IaJhXTIkzw==
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -776,10 +776,10 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-ts-node@^10.8.0:
-  version "10.8.0"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-10.8.0.tgz#3ceb5ac3e67ae8025c1950626aafbdecb55d82ce"
-  integrity sha512-/fNd5Qh+zTt8Vt1KbYZjRHCE9sI5i7nqfD/dzBBRDeVXZXS6kToW6R7tTU6Nd4XavFs0mAVCg29Q//ML7WsZYA==
+ts-node@^10.8.1:
+  version "10.8.1"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-10.8.1.tgz#ea2bd3459011b52699d7e88daa55a45a1af4f066"
+  integrity sha512-Wwsnao4DQoJsN034wePSg5nZiw4YKXf56mPIAeD6wVmiv+RytNSWqc2f3fKvcUoV+Yn2+yocD71VOfQHbmVX4g==
   dependencies:
     "@cspotcode/source-map-support" "^0.8.0"
     "@tsconfig/node10" "^1.0.7"
@@ -812,10 +812,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^4.7.2:
-  version "4.7.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.2.tgz#1f9aa2ceb9af87cca227813b4310fff0b51593c4"
-  integrity sha512-Mamb1iX2FDUpcTRzltPxgWMKy3fhg0TN378ylbktPGPK/99KbDtMQ4W1hwgsbPAsG3a0xKa1vmw4VKZQbkvz5A==
+typescript@^4.7.3:
+  version "4.7.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.3.tgz#8364b502d5257b540f9de4c40be84c98e23a129d"
+  integrity sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==
 
 unique-string@^3.0.0:
   version "3.0.0"

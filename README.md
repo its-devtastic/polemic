@@ -21,6 +21,16 @@ Polemic
 
 # Polemic
 
+Polemic is a tool for publishing online academic content, such as blogs, articles and tutorials.
+Polemic is built on top of [Unified](https://unifiedjs.com/) and [Next.js](https://nextjs.org/) and is shipped as a simple to use CLI.
+It's inspired by [Jupyter Book](https://jupyterbook.org) and [LaTeX](https://www.latex-project.org/).
+
+Polemic documents are written in [Markdown](https://www.markdownguide.org) which is a plain-text markup language.
+It offers support for math (through KaTeX), footnotes, images, videos and more.
+
+Polemic documents are transformed into beautiful, responsive websites that can be deployed anywhere.
+
+
 ## Installation
 ```shell
 npm install -g polemic

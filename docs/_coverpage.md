@@ -1,6 +1,6 @@
 ![logo](_media/logo-192x192.png)
 
-# Polemic <small>0.3.0</small>
+# Polemic <small>0.4.0</small>
 
 > ✍️🎓 Publishing tool for academic papers, tutorials, books and blogs.
 
