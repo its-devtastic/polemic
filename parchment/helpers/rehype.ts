@@ -56,15 +56,35 @@ export const rehypeAddNodeId =
     return tree;
   };
 
-// Remark local assets support
+// Rehype local assets support
 export const rehypeAssets =
   (): any =>
   (tree: any): Promise<any> => {
     let counter = 1;
     visit(tree, (node) => {
-      if (["img"].includes(node.tagName)) {
+      if (["img", "video"].includes(node.tagName)) {
         node.index = counter;
         counter = counter + 1;
+      }
+    });
+
+    return tree;
+  };
+
+export const defaultVideoExtensions = ["mov", "mp4", "mpg", "mpeg", "avi"];
+
+const videoExtRegex = new RegExp(`\\.(${defaultVideoExtensions.join("|")})$`);
+const isVideoExt = (value: string) => videoExtRegex.test(value);
+
+// Rehype video support
+export const rehypeVideos =
+  (): any =>
+  (tree: any): Promise<any> => {
+    visit(tree, (node) => {
+      const src = node.properties?.src;
+
+      if (node.tagName === "img" && isVideoExt(src)) {
+        node.tagName = "video";
       }
     });
 

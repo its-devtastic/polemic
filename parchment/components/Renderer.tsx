@@ -6,6 +6,7 @@ import { Tree } from "../types";
 import Heading from "./Heading";
 import P from "./P";
 import Img from "./Img";
+import Video from "./Video";
 
 const COMPONENTS: Record<string, React.FC<any>> = {
   p: P,
@@ -21,6 +22,7 @@ const COMPONENTS: Record<string, React.FC<any>> = {
   h5: Heading,
   h6: Heading,
   img: Img,
+  video: Video,
 };
 
 // Converts a style string to an object to comply with React
