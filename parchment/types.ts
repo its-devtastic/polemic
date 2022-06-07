@@ -13,6 +13,7 @@ export interface Position {
 export interface ProjectConfig {
   type: ProjectType;
   sectionNumbering: boolean;
+  assetNumbering: boolean;
   tableOfContents: boolean;
 }
 
