@@ -2,7 +2,10 @@ import { visit } from "unist-util-visit";
 
 import { Tree } from "../../types";
 
-export default function remarkSections(): any {
+/**
+ * Remark plugin that adds section numbering to headings.
+ */
+export default function remarkSectionNumbering(): any {
   return (tree: Tree): any => {
     let headingIndex = 1;
     let sectionIndex = 1;

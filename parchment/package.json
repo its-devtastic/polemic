@@ -43,6 +43,7 @@
     "slugify": "^1.6.5",
     "tailwindcss": "3.0.24",
     "unified": "10.1.2",
+    "unist-util-find-after": "^4.0.0",
     "unist-util-visit": "^4.1.0",
     "unist-util-visit-parents": "^5.1.0"
   },
