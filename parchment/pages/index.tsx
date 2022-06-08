@@ -14,6 +14,7 @@ import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkFrontmatter from "remark-frontmatter";
+import remarkGemoji from "remark-gemoji";
 import remarkId from "../helpers/remark/remarkId";
 import remarkSlugId from "../helpers/remark/remarkSlugId";
 import remarkLocalAssets from "../helpers/remark/remarkLocalAssets";
@@ -38,7 +39,6 @@ const Home: NextPage<{
   docs: Document[];
   config: ProjectConfig;
 }> = ({ docs, config }) => {
-  console.log(docs[0].mdast);
   return (
     <DocumentProvider docs={docs}>
       <ConfigProvider config={config}>
@@ -90,6 +90,7 @@ export async function getStaticProps() {
       const processor = unified()
         .use(remarkParse)
         .use(remarkGfm)
+        .use(remarkGemoji)
         .use(remarkId)
         .use(remarkSlugId)
         .use(remarkSections)
