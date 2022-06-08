@@ -15,16 +15,17 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGemoji from "remark-gemoji";
+import remarkSmartypants from "remark-smartypants";
 import remarkId from "../helpers/remark/remarkId";
 import remarkSlugId from "../helpers/remark/remarkSlugId";
 import remarkLocalAssets from "../helpers/remark/remarkLocalAssets";
 import remarkImages from "../helpers/remark/remarkImages";
-import remarkSections from "../helpers/remark/remarkSections";
 import remarkVideos from "../helpers/remark/remarkVideos";
+import remarkSectionNumbering from "../helpers/remark/remarkSectionNumbering";
 import remarkAssetNumbering from "../helpers/remark/remarkAssetNumbering";
 import remarkEquationNumbering from "../helpers/remark/remarkEquationNumbering";
 import remarkParagraphs from "../helpers/remark/remarkParagraphs";
-import remarkSmartypants from "remark-smartypants";
+import remarkSectionize from "../helpers/remark/remarkSectionize";
 
 import { ProjectConfig, Document } from "../types";
 import { defaultProjectConfig } from "../helpers/config";
@@ -93,16 +94,17 @@ export async function getStaticProps() {
         .use(remarkSmartypants, { dashes: "oldschool" })
         .use(remarkGfm)
         .use(remarkGemoji)
-        .use(remarkId)
         .use(remarkSlugId)
-        .use(remarkSections)
         .use(remarkImages)
         .use(remarkVideos)
         .use(remarkMath)
+        .use(remarkSectionNumbering)
         .use(remarkAssetNumbering)
         .use(remarkEquationNumbering)
         .use(remarkFrontmatter)
         .use(remarkParagraphs)
+        .use(remarkSectionize)
+        .use(remarkId)
         .use(remarkLocalAssets, [
           {
             projectDir,

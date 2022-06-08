@@ -3,32 +3,34 @@ import * as R from "ramda";
 import camelcase from "camelcase";
 
 import { Tree } from "../types";
-import Raw from "./Raw";
-import Heading from "./Heading";
-import Paragraph from "./Paragraph";
-import Img from "./Img";
-import Video from "./Video";
-import Link from "./Link";
-import Ol from "./Ol";
-import Li from "./Li";
-import InlineMath from "./InlineMath";
-import Math from "./Math";
 import Blockquote from "./Blockquote";
 import Footnote from "./Footnote";
+import Heading from "./Heading";
+import Img from "./Img";
+import InlineMath from "./InlineMath";
+import Li from "./Li";
+import Link from "./Link";
+import Math from "./Math";
+import Ol from "./Ol";
+import Paragraph from "./Paragraph";
+import Raw from "./Raw";
+import Section from "./Section";
+import Video from "./Video";
 
 const COMPONENTS: Record<string, React.FC<any>> = {
-  raw: Raw,
-  paragraph: Paragraph,
-  heading: Heading,
   blockquote: Blockquote,
-  link: Link,
-  ol: Ol,
-  li: Li,
-  image: Img,
-  video: Video,
-  inlineMath: InlineMath,
-  math: Math,
   footnoteReference: Footnote,
+  heading: Heading,
+  image: Img,
+  inlineMath: InlineMath,
+  li: Li,
+  link: Link,
+  math: Math,
+  ol: Ol,
+  paragraph: Paragraph,
+  raw: Raw,
+  section: Section,
+  video: Video,
 };
 
 // Converts a style string to an object to comply with React
