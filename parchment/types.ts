@@ -14,26 +14,27 @@ export interface ProjectConfig {
   type: ProjectType;
   sectionNumbering: boolean;
   assetNumbering: boolean;
+  equationNumbering: boolean;
   tableOfContents: boolean;
 }
 
 export interface Tree {
   id: string;
   type: string;
-  tagName: string;
-  section: string;
-  value: string;
-  properties: Record<string, any>;
-  children: Tree[];
+  depth?: number;
+  section?: string;
+  value?: string;
+  properties?: Record<string, any>;
+  children?: Tree[];
   position: {
     start: Position;
     end: Position;
   };
+  [p: string]: any;
 }
 
 export interface Document {
   md: string;
-  hast: Tree;
   mdast: Tree;
   frontMatter: Record<string, string>;
 }

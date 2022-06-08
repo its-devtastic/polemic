@@ -2,15 +2,19 @@ import React from "react";
 import Zoom from "react-medium-image-zoom";
 
 import useConfig from "../hooks/useConfig";
+import { Tree } from "../types";
 
-const Img: React.FC<any> = ({ node, children, src, alt, title, ...props }) => {
+const Img: React.FC<{ node: Tree }> = ({
+  node: { url, alt, title, assetIndex },
+  ...props
+}) => {
   const { assetNumbering } = useConfig();
 
   return (
     <Zoom>
       <figure className="my-8 mx-auto w-2/3 space-y-2">
         <img
-          src={src}
+          src={url}
           alt={alt}
           {...props}
           className="rounded-md print:rounded-none"
@@ -18,7 +22,7 @@ const Img: React.FC<any> = ({ node, children, src, alt, title, ...props }) => {
         <figcaption className="text-center leading-tight">
           {(alt || assetNumbering) && (
             <div className="text-md text-slate-600 italic font-bold">
-              {assetNumbering ? `(${node.index}) ` : ""}
+              {assetNumbering ? `(${assetIndex}) ` : ""}
               {alt}
             </div>
           )}

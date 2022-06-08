@@ -3,32 +3,32 @@ import * as R from "ramda";
 import camelcase from "camelcase";
 
 import { Tree } from "../types";
+import Raw from "./Raw";
 import Heading from "./Heading";
-import P from "./P";
+import Paragraph from "./Paragraph";
 import Img from "./Img";
 import Video from "./Video";
-import A from "./A";
+import Link from "./Link";
 import Ol from "./Ol";
 import Li from "./Li";
+import InlineMath from "./InlineMath";
+import Math from "./Math";
+import Blockquote from "./Blockquote";
+import Footnote from "./Footnote";
 
 const COMPONENTS: Record<string, React.FC<any>> = {
-  p: P,
-  h1: () => (
-    <div className="font-mono select-none bg-red-50 text-red-600 rounded-sm px-2 py-1 font-sans text-sm">
-      👮 Level 1 headings (<code>#</code>) are not allowed here. Start at level
-      2 (<code>##</code>) instead.
-    </div>
-  ),
-  h2: Heading,
-  h3: Heading,
-  h4: Heading,
-  h5: Heading,
-  h6: Heading,
-  a: A,
+  raw: Raw,
+  paragraph: Paragraph,
+  heading: Heading,
+  blockquote: Blockquote,
+  link: Link,
   ol: Ol,
   li: Li,
-  img: Img,
+  image: Img,
   video: Video,
+  inlineMath: InlineMath,
+  math: Math,
+  footnoteReference: Footnote,
 };
 
 // Converts a style string to an object to comply with React
@@ -47,25 +47,29 @@ function styleStringToObject(style: string): Record<string, string> {
 
 // Maps a hast tree to React components
 function treeToReact(tree: Tree): any {
+  const cmp = COMPONENTS[tree.type];
+
   return tree.type === "text"
     ? tree.value
     : tree.type === "root"
-    ? tree.children.map(treeToReact)
-    : React.createElement(
-        COMPONENTS[tree.tagName] || tree.tagName,
+    ? tree.children?.map(treeToReact)
+    : cmp
+    ? React.createElement(
+        cmp,
         {
           key: tree.id,
           node: tree,
           ...R.evolve({
             style: styleStringToObject,
-          })(tree.properties),
+          })(tree?.properties || {}),
         },
-        tree.children.map(treeToReact)
-      );
+        tree.children?.map(treeToReact)
+      )
+    : null;
 }
 
-const Renderer: React.FC<{ hast: Tree }> = ({ hast }) => {
-  return treeToReact(hast);
+const Renderer: React.FC<{ mdast: Tree }> = ({ mdast }) => {
+  return treeToReact(mdast);
 };
 
 export default Renderer;

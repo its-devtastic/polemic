@@ -14,23 +14,18 @@ import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkFrontmatter from "remark-frontmatter";
-import remarkRehype from "remark-rehype";
-
-// Rehype plugins
-import rehypeStringify from "rehype-stringify";
-import rehypeKatex from "rehype-katex";
-import rehypeSlug from "rehype-slug";
+import remarkId from "../helpers/remark/remarkId";
+import remarkSlugId from "../helpers/remark/remarkSlugId";
+import remarkLocalAssets from "../helpers/remark/remarkLocalAssets";
+import remarkImages from "../helpers/remark/remarkImages";
+import remarkSections from "../helpers/remark/remarkSections";
+import remarkVideos from "../helpers/remark/remarkVideos";
+import remarkAssetNumbering from "../helpers/remark/remarkAssetNumbering";
+import remarkEquationNumbering from "../helpers/remark/remarkEquationNumbering";
+import remarkParagraphs from "../helpers/remark/remarkParagraphs";
 
 import { ProjectConfig, Document } from "../types";
 import { defaultProjectConfig } from "../helpers/config";
-import {
-  rehypeAddNodeId,
-  rehypeAddSections,
-  rehypeAssets,
-  rehypeParagraphs,
-  rehypeVideos,
-} from "../helpers/rehype";
-import { remarkLocalAssets, remarkImages } from "../helpers/remark";
 
 import Article from "../components/Article";
 import TableOfContents from "../components/TableOfContents";
@@ -43,6 +38,7 @@ const Home: NextPage<{
   docs: Document[];
   config: ProjectConfig;
 }> = ({ docs, config }) => {
+  console.log(docs[0].mdast);
   return (
     <DocumentProvider docs={docs}>
       <ConfigProvider config={config}>
@@ -91,14 +87,19 @@ export async function getStaticProps() {
       return fs.readFileSync(filePath, { encoding: "utf-8" });
     })
     .map((doc) => {
-      let hast: any;
-
       const processor = unified()
         .use(remarkParse)
         .use(remarkGfm)
+        .use(remarkId)
+        .use(remarkSlugId)
+        .use(remarkSections)
         .use(remarkImages)
+        .use(remarkVideos)
         .use(remarkMath)
+        .use(remarkAssetNumbering)
+        .use(remarkEquationNumbering)
         .use(remarkFrontmatter)
+        .use(remarkParagraphs)
         .use(remarkLocalAssets, [
           {
             projectDir,
@@ -107,31 +108,13 @@ export async function getStaticProps() {
               ".polemic/parchment/public/assets"
             ),
           },
-        ])
-        .use(remarkRehype, {
-          clobberPrefix: "",
-        })
-        .use(rehypeVideos)
-        .use(rehypeKatex)
-        .use(rehypeSlug)
-        .use(rehypeAssets)
-        .use(rehypeAddSections)
-        .use(rehypeAddNodeId)
-        .use(() => (tree) => {
-          // TODO There must be a better way
-          hast = tree;
-        })
-        .use(rehypeParagraphs)
-        .use(rehypeStringify);
+        ]);
 
-      const mdast = processor.parse(doc);
-
-      processor.processSync(doc);
+      const mdast = processor.runSync(processor.parse(doc));
 
       return {
         md: doc,
         frontMatter: matter(doc).data,
-        hast,
         mdast,
       };
     });
