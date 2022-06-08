@@ -24,6 +24,7 @@ import remarkVideos from "../helpers/remark/remarkVideos";
 import remarkAssetNumbering from "../helpers/remark/remarkAssetNumbering";
 import remarkEquationNumbering from "../helpers/remark/remarkEquationNumbering";
 import remarkParagraphs from "../helpers/remark/remarkParagraphs";
+import remarkSmartypants from "remark-smartypants";
 
 import { ProjectConfig, Document } from "../types";
 import { defaultProjectConfig } from "../helpers/config";
@@ -89,6 +90,7 @@ export async function getStaticProps() {
     .map((doc) => {
       const processor = unified()
         .use(remarkParse)
+        .use(remarkSmartypants, { dashes: "oldschool" })
         .use(remarkGfm)
         .use(remarkGemoji)
         .use(remarkId)
