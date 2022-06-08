@@ -20,9 +20,9 @@ export default function ToCProvider({ children }: any) {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const headings = useMemo(
     () =>
-      activeDocument?.hast.children.filter(
-        R.where({
-          tagName: R.includes(R.__, ["h2", "h3", "h4", "h5", "h6"]),
+      activeDocument?.mdast.children.filter(
+        R.whereEq({
+          element: "heading",
         })
       ) ?? [],
     [activeDocument]

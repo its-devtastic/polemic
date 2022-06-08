@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./P.css";
-
 html {
     @apply scroll-smooth;
 }

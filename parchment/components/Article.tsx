@@ -6,6 +6,7 @@ import useDocument from "../hooks/useDocument";
 
 import ReadingProgress from "./ReadingProgress";
 import Renderer from "./Renderer";
+import Footnotes from "./Footnotes";
 
 const Article = () => {
   const { activeDocument: doc } = useDocument();
@@ -44,7 +45,9 @@ const Article = () => {
               </div>
             )}
 
-            <Renderer hast={doc.hast} />
+            <Renderer mdast={doc.mdast} />
+
+            <Footnotes mdast={doc.mdast} />
           </article>
         </div>
       </div>
