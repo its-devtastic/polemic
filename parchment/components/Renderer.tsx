@@ -16,6 +16,7 @@ import Paragraph from "./Paragraph";
 import Raw from "./Raw";
 import Section from "./Section";
 import Video from "./Video";
+import Citation from "./Citation";
 
 const COMPONENTS: Record<string, React.FC<any>> = {
   blockquote: Blockquote,
@@ -31,6 +32,7 @@ const COMPONENTS: Record<string, React.FC<any>> = {
   raw: Raw,
   section: Section,
   video: Video,
+  citation: Citation,
 };
 
 // Converts a style string to an object to comply with React

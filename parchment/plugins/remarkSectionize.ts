@@ -1,6 +1,6 @@
 import { findAfter } from "unist-util-find-after";
 import { visitParents } from "unist-util-visit-parents";
-import { Tree } from "../../types";
+import { Tree } from "../types";
 
 const MAX_HEADING_DEPTH = 6;
 

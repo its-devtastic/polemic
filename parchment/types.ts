@@ -16,6 +16,17 @@ export interface ProjectConfig {
   assetNumbering: boolean;
   equationNumbering: boolean;
   tableOfContents: boolean;
+  citationStyle: "ama" | "vancouver" | "harvard1";
+  citationLocale: "en-US" | "es-ES" | "de-DE" | "fr-FR" | "nl-NL";
+  bibliography?: string;
+  localization: {
+    labels: {
+      footnotes: string;
+      bibliography: string;
+      tableOfContents: string;
+    };
+    dateTimeFormat: string;
+  };
 }
 
 export interface Tree {
