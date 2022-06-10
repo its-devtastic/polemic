@@ -1,7 +1,7 @@
 import { visit } from "unist-util-visit";
 import { nanoid } from "nanoid";
 
-import { Tree } from "../../types";
+import { Tree } from "../types";
 
 /**
  * Adds an ID to every node.

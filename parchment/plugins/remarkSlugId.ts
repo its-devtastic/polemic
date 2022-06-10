@@ -2,7 +2,7 @@ import { visit } from "unist-util-visit";
 import { toString } from "mdast-util-to-string";
 import slugify from "slugify";
 
-import { Tree } from "../../types";
+import { Tree } from "../types";
 
 /**
  * Adds an ID to the properties of headings.

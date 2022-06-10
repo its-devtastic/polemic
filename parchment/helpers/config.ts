@@ -6,4 +6,14 @@ export const defaultProjectConfig: ProjectConfig = {
   assetNumbering: true,
   equationNumbering: true,
   tableOfContents: true,
+  citationLocale: "en-US",
+  citationStyle: "ama",
+  localization: {
+    labels: {
+      footnotes: "Footnotes",
+      bibliography: "Bibliography",
+      tableOfContents: "Table of Contents",
+    },
+    dateTimeFormat: "D MMMM YYYY",
+  },
 };

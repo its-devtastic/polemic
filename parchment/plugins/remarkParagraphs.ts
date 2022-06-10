@@ -1,6 +1,6 @@
 import { visitParents } from "unist-util-visit-parents";
 
-import { Tree } from "../../types";
+import { Tree } from "../types";
 
 /**
  * Remark plugin to only allow top-level paragraphs.

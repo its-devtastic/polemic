@@ -1,16 +1,20 @@
 import * as R from "ramda";
 import Head from "next/head";
 import { useMeasure } from "react-use";
+import dayjs from "dayjs";
 
 import useDocument from "../hooks/useDocument";
+import useConfig from "../hooks/useConfig";
 
 import ReadingProgress from "./ReadingProgress";
 import Renderer from "./Renderer";
 import Footnotes from "./Footnotes";
+import Bibliography from "./Bibliography";
 
 const Article = () => {
   const { activeDocument: doc } = useDocument();
   const [ref, { height, top }] = useMeasure();
+  const { localization } = useConfig();
   const frontMatter = doc?.frontMatter;
 
   return doc && frontMatter ? (
@@ -39,7 +43,9 @@ const Article = () => {
                 )}
                 {frontMatter.date && (
                   <div className="text-xl text-slate-600 mb-6">
-                    {frontMatter.date}
+                    {dayjs(frontMatter.date).format(
+                      localization.dateTimeFormat
+                    )}
                   </div>
                 )}
               </div>
@@ -48,6 +54,8 @@ const Article = () => {
             <Renderer mdast={doc.mdast} />
 
             <Footnotes mdast={doc.mdast} />
+
+            <Bibliography mdast={doc.mdast} />
           </article>
         </div>
       </div>

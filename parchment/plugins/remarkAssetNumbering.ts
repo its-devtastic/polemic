@@ -1,6 +1,6 @@
 import { visit } from "unist-util-visit";
 
-import { Tree } from "../../types";
+import { Tree } from "../types";
 
 /**
  * Remark plugin that adds an asset index to all
