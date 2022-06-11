@@ -24,7 +24,7 @@ const ReadingProgress: React.FC<{ documentHeight: number }> = ({
   return (
     <div
       ref={ref}
-      className="w-full fixed left-0 top-0 z-10 bg-slate-200 h-1 hover:h-3 cursor-pointer transition-[height] delay-500 hover:delay-[0ms]"
+      className="w-full fixed left-0 top-0 z-10 bg-slate-200 h-1 hover:h-3 cursor-pointer transition-[height] delay-500 hover:delay-[0ms] print:hidden"
       onClick={() =>
         window.scrollTo({
           top: ((documentHeight - windowHeight) * elX) / elW,
