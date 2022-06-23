@@ -56,7 +56,7 @@ polemic preview
 
 ### Export
 
-Exports your Polemic project to a static HTML website.
+Exports your Polemic project to a PDF.
 
 ```shell
 polemic export

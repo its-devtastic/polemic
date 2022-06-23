@@ -1,6 +1,6 @@
 {
   "name": "polemic",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Publishing tool for academic papers, tutorials, books and blogs.",
   "author": "Leon van der Grient <leon@devtastic.co>",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "@types/configstore": "^5.0.1",
     "@types/fs-extra": "^9.0.13",
     "@types/glob": "^7.2.0",
-    "@types/node": "^17.0.40",
+    "@types/node": "^18.0.0",
     "@types/ramda": "^0.28.14",
     "@types/serve-handler": "^6.1.1",
     "@types/shelljs": "^0.8.11",
@@ -24,14 +24,14 @@
     "fs-extra": "^10.1.0",
     "glob": "^8.0.3",
     "ora": "^6.1.0",
-    "prettier": "^2.6.2",
+    "prettier": "^2.7.1",
     "pupa": "^3.1.0",
-    "puppeteer": "^14.3.0",
+    "puppeteer": "^15.0.0",
     "ramda": "^0.28.0",
     "serve-handler": "^6.1.3",
     "shelljs": "^0.8.5",
     "ts-node": "^10.8.1",
-    "typescript": "^4.7.3"
+    "typescript": "^4.7.4"
   },
   "repository": {
     "url": "git@github.com:devtastic-org/polemic.git",
