@@ -1,13 +1,13 @@
 import React from "react";
 
-import useConfig from "../hooks/useConfig";
-import { Tree } from "../types";
+import useConfig from "../../hooks/useConfig";
+import { Tree } from "../../types";
 
 const Video: React.FC<{ node: Tree }> = ({
   node: { url, title, assetIndex },
   ...props
 }) => {
-  const { assetNumbering } = useConfig();
+  const { figureNumbering } = useConfig();
 
   return (
     <div className="my-8 w-full space-y-2">
@@ -24,7 +24,7 @@ const Video: React.FC<{ node: Tree }> = ({
         />
       </video>
       <div className="text-center">
-        {assetNumbering && (
+        {figureNumbering && (
           <div className="text-md text-slate-600 italic font-bold">{`(${assetIndex})`}</div>
         )}
         {title && (

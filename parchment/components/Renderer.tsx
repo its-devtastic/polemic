@@ -3,23 +3,27 @@ import * as R from "ramda";
 import camelcase from "camelcase";
 
 import { Tree } from "../types";
-import Blockquote from "./Blockquote";
-import Footnote from "./Footnote";
-import Heading from "./Heading";
-import Img from "./Img";
-import InlineMath from "./InlineMath";
-import Li from "./Li";
-import Link from "./Link";
-import Math from "./Math";
-import Ol from "./Ol";
-import Paragraph from "./Paragraph";
-import Raw from "./Raw";
-import Section from "./Section";
-import Video from "./Video";
-import Citation from "./Citation";
+import Blockquote from "./node-types/Blockquote";
+import Citation from "./node-types/Citation";
+import Footnote from "./node-types/Footnote";
+import Heading from "./node-types/Heading";
+import Img from "./node-types/Img";
+import InlineMath from "./node-types/InlineMath";
+import Li from "./node-types/Li";
+import Link from "./node-types/Link";
+import Math from "./node-types/Math";
+import Ol from "./node-types/Ol";
+import Paragraph from "./node-types/Paragraph";
+import Raw from "./node-types/Raw";
+import Section from "./node-types/Section";
+import Table from "./node-types/Table";
+import TableCell from "./node-types/TableCell";
+import TableRow from "./node-types/TableRow";
+import Video from "./node-types/Video";
 
 const COMPONENTS: Record<string, React.FC<any>> = {
   blockquote: Blockquote,
+  citation: Citation,
   footnoteReference: Footnote,
   heading: Heading,
   image: Img,
@@ -31,8 +35,10 @@ const COMPONENTS: Record<string, React.FC<any>> = {
   paragraph: Paragraph,
   raw: Raw,
   section: Section,
+  table: Table,
+  tableCell: TableCell,
+  tableRow: TableRow,
   video: Video,
-  citation: Citation,
 };
 
 // Converts a style string to an object to comply with React

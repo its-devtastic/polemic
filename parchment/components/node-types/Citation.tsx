@@ -2,8 +2,8 @@ import React from "react";
 import * as R from "ramda";
 import Cite from "citation-js";
 
-import { Tree } from "../types";
-import useConfig from "../hooks/useConfig";
+import { Tree } from "../../types";
+import useConfig from "../../hooks/useConfig";
 
 const Citation: React.FC<{ node: Tree }> = ({ node }) => {
   const { citationStyle, citationLocale } = useConfig();

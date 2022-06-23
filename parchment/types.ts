@@ -13,8 +13,9 @@ export interface Position {
 export interface ProjectConfig {
   type: ProjectType;
   sectionNumbering: boolean;
-  assetNumbering: boolean;
+  figureNumbering: boolean;
   equationNumbering: boolean;
+  tableNumbering: boolean;
   tableOfContents: boolean;
   citationStyle: "ama" | "vancouver" | "harvard1";
   citationLocale: "en-US" | "es-ES" | "de-DE" | "fr-FR" | "nl-NL";
@@ -24,6 +25,9 @@ export interface ProjectConfig {
       footnotes: string;
       bibliography: string;
       tableOfContents: string;
+      figureNumbering: string;
+      tableNumbering: string;
+      equationNumbering: string;
     };
     dateTimeFormat: string;
   };
