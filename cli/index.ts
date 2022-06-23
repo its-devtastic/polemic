@@ -33,7 +33,10 @@ program
 
 program
   .command("export")
-  .description("Exports your Polemic project to a static HTML website.")
+  .addOption(
+    new Option("-f, --format <format>").choices(["pdf", "html"]).default("pdf")
+  )
+  .description("Exports your Polemic project to PDF or a static HTML website.")
   .action(exportCommand);
 
 program
