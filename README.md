@@ -17,7 +17,10 @@ Polemic
   <a href="https://www.npmjs.org/package/polemic">
     <img src="https://img.shields.io/npm/dm/polemic.svg" alt="Monthly download on NPM" />
   </a>
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CODNDUCT.md)
 </div>
+
 
 # Polemic
 
