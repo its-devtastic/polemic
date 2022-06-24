@@ -1,18 +1,23 @@
 {
-  "name": "polemic",
   "description": "Publishing tool for academic papers, tutorials, books and blogs.",
   "author": "Leon van der Grient <leon@devtastic.co>",
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "packages"
+    "packages/*"
   ],
+  "scripts": {
+    "test": "jest"
+  },
   "repository": {
     "url": "git@github.com:devtastic-org/polemic.git",
     "type": "git"
   },
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
+  "jest": {
+    "rootDir": "./packages"
   },
   "keywords": [
     "markdown",
@@ -24,6 +29,8 @@
     "tutorials"
   ],
   "devDependencies": {
+    "@types/jest": "^28.1.3",
+    "jest": "^28.1.1",
     "prettier": "^2.7.1"
   }
 }
