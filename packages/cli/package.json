@@ -9,6 +9,9 @@
   "bin": {
     "polemic": "./index.ts"
   },
+  "scripts": {
+    "polemic": "ts-node ./index.ts"
+  },
   "dependencies": {
     "@polemic/parchment": "^0.7.0",
     "@types/configstore": "^5.0.1",
