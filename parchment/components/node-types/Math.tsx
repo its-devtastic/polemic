@@ -2,8 +2,8 @@ import React from "react";
 import katex from "katex";
 import { useCopyToClipboard } from "react-use";
 
-import { Tree } from "../types";
-import useConfig from "../hooks/useConfig";
+import { Tree } from "../../types";
+import useConfig from "../../hooks/useConfig";
 
 const Math: React.FC<{ node: Tree }> = ({ node }) => {
   const math = katex.renderToString(node.value!);

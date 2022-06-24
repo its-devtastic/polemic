@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Waypoint } from "react-waypoint";
 import classNames from "classnames";
 
-import useConfig from "../hooks/useConfig";
-import useToC from "../hooks/useToC";
+import useConfig from "../../hooks/useConfig";
+import useToC from "../../hooks/useToC";
 
 const Heading: React.FC<any> = ({ node, children, ...props }) => {
   const config = useConfig();

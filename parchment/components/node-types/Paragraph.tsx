@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Tree } from "../types";
+import { Tree } from "../../types";
 
 const Paragraph: React.FC<{ node: Tree; children: any }> = ({ children }) => {
   return (

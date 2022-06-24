@@ -23,7 +23,8 @@ import remarkLocalAssets from "../plugins/remarkLocalAssets";
 import remarkImages from "../plugins/remarkImages";
 import remarkVideos from "../plugins/remarkVideos";
 import remarkSectionNumbering from "../plugins/remarkSectionNumbering";
-import remarkAssetNumbering from "../plugins/remarkAssetNumbering";
+import remarkFigureNumbering from "../plugins/remarkFigureNumbering";
+import remarkTableNumbering from "../plugins/remarkTableNumbering";
 import remarkEquationNumbering from "../plugins/remarkEquationNumbering";
 import remarkParagraphs from "../plugins/remarkParagraphs";
 import remarkSectionize from "../plugins/remarkSectionize";
@@ -106,8 +107,9 @@ export async function getStaticProps() {
           projectDir,
         })
         .use(remarkSectionNumbering)
-        .use(remarkAssetNumbering)
+        .use(remarkFigureNumbering)
         .use(remarkEquationNumbering)
+        .use(remarkTableNumbering)
         .use(remarkFrontmatter)
         .use(remarkParagraphs)
         .use(remarkSectionize)

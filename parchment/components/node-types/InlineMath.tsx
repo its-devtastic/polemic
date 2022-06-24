@@ -2,7 +2,7 @@ import React from "react";
 import katex from "katex";
 import { useCopyToClipboard } from "react-use";
 
-import { Tree } from "../types";
+import { Tree } from "../../types";
 
 const InlineMath: React.FC<{ node: Tree }> = ({ node }) => {
   const math = katex.renderToString(node.value!);
