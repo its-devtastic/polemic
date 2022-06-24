@@ -6,29 +6,7 @@ import fs from "fs-extra";
 import glob from "glob";
 import { cosmiconfig } from "cosmiconfig";
 import * as R from "ramda";
-import matter from "gray-matter";
-import { unified } from "unified";
-import yaml from "yaml";
-
-// Remark plugins
-import remarkParse from "remark-parse";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import remarkFrontmatter from "remark-frontmatter";
-import remarkGemoji from "remark-gemoji";
-import remarkSmartypants from "remark-smartypants";
-import remarkId from "../plugins/remarkId";
-import remarkSlugId from "../plugins/remarkSlugId";
-import remarkLocalAssets from "../plugins/remarkLocalAssets";
-import remarkImages from "../plugins/remarkImages";
-import remarkVideos from "../plugins/remarkVideos";
-import remarkSectionNumbering from "../plugins/remarkSectionNumbering";
-import remarkFigureNumbering from "../plugins/remarkFigureNumbering";
-import remarkTableNumbering from "../plugins/remarkTableNumbering";
-import remarkEquationNumbering from "../plugins/remarkEquationNumbering";
-import remarkParagraphs from "../plugins/remarkParagraphs";
-import remarkSectionize from "../plugins/remarkSectionize";
-import remarkCitation from "../plugins/remarkCitation";
+import parser from "@polemic/parser";
 
 import { ProjectConfig, Document } from "../types";
 import { defaultProjectConfig } from "../helpers/config";
@@ -87,55 +65,17 @@ export async function getStaticProps() {
 
       return fs.readFileSync(filePath, { encoding: "utf-8" });
     })
-    .map((doc) => {
-      const frontMatter = matter(doc, {
-        engines: { yaml: (s) => yaml.parse(s, { schema: "failsafe" }) },
-      }).data;
-
-      const processor = unified()
-        .use(remarkParse)
-        .use(remarkSmartypants, { dashes: "oldschool" })
-        .use(remarkGfm)
-        .use(remarkGemoji)
-        .use(remarkSlugId)
-        .use(remarkImages)
-        .use(remarkVideos)
-        .use(remarkMath)
-        .use(remarkCitation, {
-          bibliographyFile:
-            frontMatter.bibliography || config?.config.bibliography,
-          projectDir,
-        })
-        .use(remarkSectionNumbering)
-        .use(remarkFigureNumbering)
-        .use(remarkEquationNumbering)
-        .use(remarkTableNumbering)
-        .use(remarkFrontmatter)
-        .use(remarkParagraphs)
-        .use(remarkSectionize)
-        .use(remarkId)
-        .use(remarkLocalAssets, [
-          {
-            projectDir,
-            assetDir: path.resolve(
-              projectDir,
-              ".polemic/parchment/public/assets"
-            ),
-          },
-        ]);
-
-      const mdast = processor.runSync(processor.parse(doc));
-
-      return {
-        md: doc,
-        frontMatter,
-        mdast,
-      };
-    });
+    .map((doc) =>
+      parser(doc, {
+        projectDir,
+        assetDir: path.resolve(projectDir, ".polemic/parchment/public/assets"),
+        config: config?.config,
+      })
+    );
 
   return {
     props: {
-      docs,
+      docs: await Promise.all(docs),
       config: R.mergeDeepRight(defaultProjectConfig, config?.config ?? {}),
     },
   };
