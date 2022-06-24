@@ -2,7 +2,7 @@
   "name": "@polemic/parchment",
   "description": "Next.js app for generating Polemic documents",
   "author": "Leon van der Grient <leon@devtastic.co>",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "license": "MIT",
   "private": false,
   "scripts": {
