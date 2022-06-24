@@ -2,7 +2,7 @@
   "name": "@polemic/parser",
   "description": "Parser for turning Markdown documents into Polemic mdast",
   "author": "Leon van der Grient <leon@devtastic.co>",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "license": "MIT",
   "private": false,
   "main": "index.ts",

@@ -2,7 +2,7 @@
   "name": "@polemic/parchment",
   "description": "Next.js app for generating Polemic documents",
   "author": "Leon van der Grient <leon@devtastic.co>",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "license": "MIT",
   "private": false,
   "scripts": {
@@ -16,7 +16,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "@polemic/parser": "0.7.1",
+    "@polemic/parser": "0.7.2",
     "camelcase": "^6.3.0",
     "citation-js": "^0.6.3",
     "classnames": "^2.3.1",
