@@ -27,7 +27,7 @@ export default async function updateCommand() {
 
   // Copy Parchment project
   await cpy(
-    path.resolve(__dirname, `../../parchment/**`),
+    path.resolve(__dirname, `../node_modules/@polemic/parchment/**`),
     path.resolve(projectDir, ".polemic", "parchment")
   );
 

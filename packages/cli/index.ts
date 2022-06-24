@@ -12,7 +12,7 @@ import updateCommand from "./commands/update.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const packageJson = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, "../package.json"), "utf8")
+  fs.readFileSync(path.resolve(__dirname, "./package.json"), "utf8")
 );
 
 program
