@@ -1,0 +1,51 @@
+{
+  "name": "@polemic/parser",
+  "description": "Parser for turning Markdown documents into Polemic mdast",
+  "author": "Leon van der Grient <leon@devtastic.co>",
+  "version": "0.7.1",
+  "license": "MIT",
+  "private": false,
+  "main": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "citation-js": "^0.6.3",
+    "fs-extra": "^10.1.0",
+    "glob": "^8.0.3",
+    "gray-matter": "4.0.3",
+    "is-url": "^1.2.4",
+    "katex": "^0.16.0",
+    "mdast-util-to-string": "^3.1.0",
+    "nanoid": "^3.3.4",
+    "ramda": "^0.28.0",
+    "remark-frontmatter": "4.0.1",
+    "remark-gemoji": "^7.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-math": "5.1.1",
+    "remark-parse": "10.0.1",
+    "remark-smartypants": "^2.0.0",
+    "slugify": "^1.6.5",
+    "unified": "10.1.2",
+    "unist-util-find-after": "^4.0.0",
+    "unist-util-visit": "^4.1.0",
+    "unist-util-visit-parents": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/is-url": "^1.2.30",
+    "@types/node": "^18.0.0",
+    "@types/ramda": "^0.28.14",
+    "typescript": "^4.7.4"
+  },
+  "repository": {
+    "url": "git@github.com:devtastic-org/polemic.git",
+    "type": "git"
+  },
+  "keywords": [
+    "markdown",
+    "latex",
+    "academic",
+    "publishing",
+    "editor",
+    "blog",
+    "tutorials"
+  ]
+}
