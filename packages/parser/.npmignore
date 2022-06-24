@@ -1,6 +1,4 @@
 node_modules
 .gitignore
 .idea
-.next
 yarn-error.log
-public/assets/
