@@ -18,6 +18,7 @@ Polemic
     <img src="https://img.shields.io/npm/dm/polemic.svg" alt="Monthly download on NPM" />
   </a>
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/devtastic-org/polemic/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/devtastic-org/polemic/tree/main)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CODNDUCT.md)
 </div>
 

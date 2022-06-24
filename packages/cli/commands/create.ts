@@ -20,17 +20,13 @@ export default async function createCommand(
   const destination = path.resolve(process.cwd(), name);
 
   // Copying template files
-  await cpy(
-    path.resolve(__dirname, `../../templates/${template}`),
-    destination,
-    {
-      rename: (basename) => {
-        const match = basename.match(/{(.+)}/)?.[1] as "name" | "template";
+  await cpy(path.resolve(__dirname, `../templates/${template}`), destination, {
+    rename: (basename) => {
+      const match = basename.match(/{(.+)}/)?.[1] as "name" | "template";
 
-        return Boolean(match) ? { name, template }[match] : basename;
-      },
-    }
-  );
+      return Boolean(match) ? { name, template }[match] : basename;
+    },
+  });
 
   const files = glob.sync("**/*", { cwd: destination });
 
@@ -48,7 +44,7 @@ export default async function createCommand(
 
   // Copy Parchment project
   await cpy(
-    path.resolve(__dirname, `../../parchment/**`),
+    path.resolve(__dirname, `../node_modules/@polemic/parchment/**`),
     path.resolve(destination, ".polemic", "parchment")
   );
 

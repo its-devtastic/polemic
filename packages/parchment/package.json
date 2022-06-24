@@ -1,9 +1,10 @@
 {
-  "name": "generated-polemic-project",
-  "description": "Generated Next.js project for a Polemic project",
-  "author": "Polemic Bot <hi@devtastic.co>",
-  "private": true,
-  "version": "0.6.0",
+  "name": "@polemic/parchment",
+  "description": "Next.js app for generating Polemic documents",
+  "author": "Leon van der Grient <leon@devtastic.co>",
+  "version": "0.7.0",
+  "license": "MIT",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,7 +16,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "camelcase": "^6  .3.0",
+    "camelcase": "^6.3.0",
     "citation-js": "^0.6.3",
     "classnames": "^2.3.1",
     "cosmiconfig": "^7.0.1",
@@ -58,5 +59,18 @@
     "eslint": "8.18.0",
     "eslint-config-next": "12.1.6",
     "typescript": "^4.7.4"
-  }
+  },
+  "repository": {
+    "url": "git@github.com:devtastic-org/polemic.git",
+    "type": "git"
+  },
+  "keywords": [
+    "markdown",
+    "latex",
+    "academic",
+    "publishing",
+    "editor",
+    "blog",
+    "tutorials"
+  ]
 }
