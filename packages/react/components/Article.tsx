@@ -1,5 +1,4 @@
 import * as R from "ramda";
-import Head from "next/head";
 import { useMeasure } from "react-use";
 import dayjs from "dayjs";
 
@@ -19,9 +18,6 @@ const Article = () => {
 
   return doc && frontMatter ? (
     <>
-      <Head>
-        <title>{frontMatter.title}</title>
-      </Head>
       <ReadingProgress documentHeight={height + top} />
       <div ref={ref as any}>
         <div className="font-serif flex relative flex-col items-center p-4 tablet:p-12">
