@@ -11,15 +11,10 @@ Polemic
 </h4>
 
 <div align="center">
-  <a href="https://www.npmjs.org/package/polemic">
-    <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/devtastic-org/polemic?label=npm&logo=npm">
-  </a>
-  <a href="https://www.npmjs.org/package/polemic">
-    <img src="https://img.shields.io/npm/dm/polemic.svg" alt="Monthly download on NPM" />
-  </a>
 
+![npm](https://img.shields.io/npm/v/polemic)
+![npm](https://img.shields.io/npm/dm/polemic)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/devtastic-org/polemic/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/devtastic-org/polemic/tree/main)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CODNDUCT.md)
 </div>
 
 
