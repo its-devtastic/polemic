@@ -1,0 +1,31 @@
+{
+  "name": "@polemic/binder",
+  "description": "Repository for Polemic projects",
+  "author": "Leon van der Grient <leon@devtastic.co>",
+  "version": "0.7.2",
+  "license": "MIT",
+  "private": false,
+  "main": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "ramda": "^0.28.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/ramda": "^0.28.14",
+    "typescript": "^4.7.4"
+  },
+  "repository": {
+    "url": "git@github.com:devtastic-org/polemic.git",
+    "type": "git"
+  },
+  "keywords": [
+    "markdown",
+    "latex",
+    "academic",
+    "publishing",
+    "editor",
+    "blog",
+    "tutorials"
+  ]
+}
