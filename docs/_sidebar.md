@@ -4,4 +4,3 @@
 * [Guides](guides.md)
   * [Bibliography](guides/bibliography.md)
 * [Configuration](configuration.md)
-s
