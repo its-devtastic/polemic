@@ -42,6 +42,11 @@ export async function getStaticProps() {
     return { props: { docs: ["Could not find project directory 😔"] } };
   }
 
+  process.env.POLEMIC_PARSER_ASSET_DIR = path.resolve(
+    projectDir,
+    ".polemic/parchment/public/assets"
+  );
+
   const files = glob.sync("**/*.md", {
     cwd: projectDir,
     ignore: ["node_modules/**"],

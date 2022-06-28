@@ -8,6 +8,12 @@
   "main": "index.ts",
   "type": "module",
   "dependencies": {
+    "@polemic/parser": "0.7.2",
+    "@polemic/types": "0.7.2",
+    "cosmiconfig": "^7.0.1",
+    "fs-extra": "^10.1.0",
+    "glob": "^8.0.3",
+    "gray-matter": "^4.0.3",
     "ramda": "^0.28.0"
   },
   "devDependencies": {

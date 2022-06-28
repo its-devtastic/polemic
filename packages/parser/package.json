@@ -8,6 +8,7 @@
   "main": "index.ts",
   "type": "module",
   "dependencies": {
+    "@polemic/types": "0.7.2",
     "citation-js": "^0.6.3",
     "fs-extra": "^10.1.0",
     "glob": "^8.0.3",

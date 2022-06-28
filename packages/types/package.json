@@ -1,0 +1,26 @@
+{
+  "name": "@polemic/types",
+  "description": "Collection of types used in Polemic packages",
+  "author": "Leon van der Grient <leon@devtastic.co>",
+  "version": "0.7.2",
+  "license": "MIT",
+  "private": false,
+  "main": "index.ts",
+  "type": "module",
+  "repository": {
+    "url": "git@github.com:devtastic-org/polemic.git",
+    "type": "git"
+  },
+  "keywords": [
+    "markdown",
+    "latex",
+    "academic",
+    "publishing",
+    "editor",
+    "blog",
+    "tutorials"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.0.0"
+  }
+}
