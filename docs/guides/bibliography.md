@@ -36,5 +36,5 @@ Alternatively you can add a `bibliography` key to your project's config file (`.
 }
 ```
 
-If you do not set any of the above, Polemic will look for a `.bib` file in your project.
-It currently only supports a single `.bib` file.
+Polemic will also look for `.bib` files in your project. If multiple files are found
+they will be merged together.

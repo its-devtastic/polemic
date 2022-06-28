@@ -1,6 +1,6 @@
 {
   "name": "polemic",
-  "version": "0.7.2",
+  "version": "0.8.1",
   "description": "Publishing tool for academic papers, tutorials, books and blogs.",
   "author": "Leon van der Grient <leon@devtastic.co>",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "polemic": "ts-node ./index.ts"
   },
   "dependencies": {
-    "@polemic/parchment": "^0.7.2",
+    "@polemic/parchment": "0.8.1",
     "@types/configstore": "^5.0.1",
     "@types/fs-extra": "^9.0.13",
     "@types/glob": "^7.2.0",

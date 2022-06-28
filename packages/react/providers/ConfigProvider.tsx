@@ -1,6 +1,5 @@
 import React from "react";
-
-import { ProjectConfig } from "../types";
+import { IProjectConfig } from "@polemic/types";
 
 export const Context = React.createContext({});
 
@@ -8,7 +7,7 @@ export default function ConfigProvider({
   config,
   children,
 }: {
-  config: ProjectConfig;
+  config: IProjectConfig;
   children: React.ReactNode;
 }) {
   return <Context.Provider value={config}>{children}</Context.Provider>;

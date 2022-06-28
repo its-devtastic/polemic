@@ -2,7 +2,7 @@
   "name": "@polemic/types",
   "description": "Collection of types used in Polemic packages",
   "author": "Leon van der Grient <leon@devtastic.co>",
-  "version": "0.7.2",
+  "version": "0.8.1",
   "license": "MIT",
   "private": false,
   "main": "index.ts",
