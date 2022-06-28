@@ -1,20 +1,32 @@
 import * as R from "ramda";
-import { IRepository, IAdapter } from "@polemic/types";
+import {
+  IRepository,
+  IAdapter,
+  IAssetsAdapter,
+  IConfigAdapter,
+  IDocumentsAdapter,
+  IBibliographyAdapter,
+} from "@polemic/types";
 
 export class Repository implements IRepository {
   projectDir: string;
-  adapters: IRepository["adapters"] = {
-    config: null,
-    documents: null,
-    bibliography: null,
-    assets: null,
-  };
+  config: IConfigAdapter | null = null;
+  documents: IDocumentsAdapter | null = null;
+  bibliography: IBibliographyAdapter | null = null;
+  assets: IAssetsAdapter | null = null;
+
+  readonly adapterTypes: AdapterType[] = [
+    "config",
+    "documents",
+    "bibliography",
+    "assets",
+  ];
 
   constructor({ projectDir, adapters }: RepositoryOptions) {
     this.projectDir = projectDir;
 
     adapters.forEach((adapter) => {
-      (this.adapters[adapter.type] as any) = adapter;
+      (this[adapter.type] as any) = adapter;
     });
   }
 
@@ -23,11 +35,13 @@ export class Repository implements IRepository {
   }
 
   async loadAdapters() {
-    return Promise.all(
-      Object.values(this.adapters)
-        .filter((a) => !R.isNil(a))
-        .map((adapter) => this.loadAdapter(adapter!))
-    );
+    const adapters = this.adapterTypes
+      .map((type) => this[type])
+      .filter((adapter) => !R.isNil(adapter));
+
+    for (let adapter of adapters) {
+      await this.loadAdapter(adapter!);
+    }
   }
 
   async loadAdapter(adapter: IAdapter) {
@@ -40,3 +54,5 @@ interface RepositoryOptions {
   projectDir: string;
   adapters: IAdapter[];
 }
+
+type AdapterType = "config" | "documents" | "bibliography" | "assets";

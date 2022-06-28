@@ -64,7 +64,7 @@ export class BibliographyAdapter implements IBibliographyAdapter {
 
   async load(repository: IRepository) {
     const frontMatterPaths: string[] =
-      repository.adapters.documents?.files
+      repository.documents?.files
         .map(({ content }) => matter(content).data?.bibliography)
         .filter(Boolean) ?? [];
 
@@ -72,7 +72,7 @@ export class BibliographyAdapter implements IBibliographyAdapter {
       R.isNil,
       R.always([]),
       R.of
-    )(repository.adapters.config?.config?.bibliography);
+    )(repository.config?.config?.bibliography);
 
     const foundPaths = glob.sync("*.bib", {
       cwd: repository.projectDir,
@@ -85,7 +85,6 @@ export class BibliographyAdapter implements IBibliographyAdapter {
       .map((path) => {
         try {
           const content = fs.readFileSync(path, { encoding: "utf-8" });
-
           return { content, uri: path };
         } catch (e) {
           console.log(`Could not find bibliography file located at ${path}`);
@@ -96,12 +95,12 @@ export class BibliographyAdapter implements IBibliographyAdapter {
   }
 
   parse(repository: IRepository) {
-    this.files.forEach(async ({ content }) => {
-      repository.adapters.documents?.documents.forEach((document) => {
+    return this.files.map(({ content }) => {
+      repository.documents?.documents.forEach((document) => {
         const { mdast, csl } = parseCitations(document.mdast, content);
         document.mdast = mdast;
-        // TODO merge CSLs
-        this.csl = csl;
+
+        this.csl = R.mergeDeepRight(this.csl, csl);
       });
     });
   }
@@ -152,8 +151,8 @@ export class AssetsAdapter implements IAssetsAdapter {
 
   async load(repository: IRepository) {}
 
-  parse(repository: IRepository) {
-    repository.adapters.documents?.documents.forEach((document) => {
+  async parse(repository: IRepository) {
+    repository.documents?.documents.forEach((document) => {
       const { mdast, files } = parseLocalFiles(document.mdast, {
         assetDir: this.assetDir,
         projectDir: repository.projectDir,

@@ -97,5 +97,7 @@ export default function remarkCitation({ cite }: { cite: any }): any {
 
       parent.children = newChildren as any;
     });
+
+    return tree;
   };
 }

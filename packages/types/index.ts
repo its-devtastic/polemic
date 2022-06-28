@@ -63,12 +63,10 @@ export interface IAssetsAdapter extends IAdapter {
  */
 export interface IRepository {
   projectDir: string;
-  adapters: {
-    config: IConfigAdapter | null;
-    documents: IDocumentsAdapter | null;
-    bibliography: IBibliographyAdapter | null;
-    assets: IAssetsAdapter | null;
-  };
+  config: IConfigAdapter | null;
+  documents: IDocumentsAdapter | null;
+  bibliography: IBibliographyAdapter | null;
+  assets: IAssetsAdapter | null;
   initialize(): Promise<any>;
   loadAdapters(): Promise<any>;
   loadAdapter(adapter: IAdapter): Promise<any>;
