@@ -1,9 +1,8 @@
 import React from "react";
 
 import { ProjectConfig } from "../types";
-import { defaultProjectConfig } from "../helpers/config";
 
-export const Context = React.createContext(defaultProjectConfig);
+export const Context = React.createContext({});
 
 export default function ConfigProvider({
   config,

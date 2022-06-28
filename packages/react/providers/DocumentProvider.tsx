@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-
-import { Document } from "../types";
+import { IParsedDocument } from "@polemic/types";
 
 export const Context = React.createContext<{
-  docs: Document[];
-  activeDocument: Document | null;
+  docs: IParsedDocument[];
+  activeDocument: IParsedDocument | null;
 }>({
   docs: [],
   activeDocument: null,
@@ -15,7 +14,7 @@ export default function DocumentProvider({
   docs,
 }: {
   children: React.ReactNode;
-  docs: Document[];
+  docs: IParsedDocument[];
 }) {
   const [activeDocument, setActiveDocument] = useState(docs[0]);
 

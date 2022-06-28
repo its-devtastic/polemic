@@ -5,8 +5,6 @@ import { nanoid } from "nanoid";
 import { Node } from "../../types";
 import { citeExtractorRe } from "./regex";
 import { parseCitation } from "./parse";
-import { loadBibFile } from "./bibloader";
-import { toCSL } from "./cite";
 
 const permittedNodeTypes = ["paragraph", "blockquote"];
 
@@ -15,20 +13,11 @@ const permittedNodeTypes = ["paragraph", "blockquote"];
  *
  * Citations can be simple (e.g. @smith01) or complex (e.g. [see @smith01; @sally96, p. 44]
  */
-export default function remarkCitation({
-  projectDir,
-  bibliographyFile,
-}: {
-  projectDir: string;
-  bibliographyFile?: string;
-}): any {
+export default function remarkCitation({ cite }: { cite: any }): any {
   return (tree: Node): any => {
-    const bibData = loadBibFile({ bibliographyFile, projectDir });
-    const citeData = toCSL(bibData);
-
     // Add a bibliography node to the root of the tree containing the bibliography data.
     tree.children = [
-      { type: "bibliography", csl: citeData.data } as any,
+      { type: "bibliography", csl: cite.data } as any,
       ...(tree.children ?? []),
     ];
 
@@ -84,7 +73,7 @@ export default function remarkCitation({
           type: "citation",
           value,
           entries,
-          csl: citeData.data.filter(({ id }: { id: string }) =>
+          csl: cite.data.filter(({ id }: { id: string }) =>
             entries.some(R.whereEq({ id }))
           ),
           citationProps,
@@ -108,5 +97,7 @@ export default function remarkCitation({
 
       parent.children = newChildren as any;
     });
+
+    return tree;
   };
 }

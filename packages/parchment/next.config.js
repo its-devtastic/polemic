@@ -1,6 +1,8 @@
 const withTM = require("next-transpile-modules")([
-  "@polemic/parser",
+  "@polemic/binder",
   "@polemic/react",
+  "@polemic/parser",
+  "@polemic/types",
 ]); // pass the modules you would like to see transpiled
 
 /** @type {import('next').NextConfig} */

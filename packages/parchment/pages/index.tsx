@@ -2,18 +2,21 @@ import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import path from "path";
-import fs from "fs-extra";
-import glob from "glob";
-import { cosmiconfig } from "cosmiconfig";
-import * as R from "ramda";
-import parser from "@polemic/parser";
-import { config, ConfigProvider, DocumentProvider } from "@polemic/react";
+import { ConfigProvider, DocumentProvider } from "@polemic/react";
+import { Repository } from "@polemic/binder";
+import {
+  DocumentsAdapter,
+  ConfigAdapter,
+  BibliographyAdapter,
+  AssetsAdapter,
+} from "@polemic/binder/adapters/fs";
+import { IParsedDocument } from "@polemic/types";
 
-import { ProjectConfig, Document } from "../types";
+import { ProjectConfig } from "../types";
 import Page from "../components/Page";
 
 const Home: NextPage<{
-  docs: Document[];
+  docs: IParsedDocument[];
   config: ProjectConfig;
 }> = ({ docs, config }) => {
   return (
@@ -42,37 +45,24 @@ export async function getStaticProps() {
     return { props: { docs: ["Could not find project directory 😔"] } };
   }
 
-  const files = glob.sync("**/*.md", {
-    cwd: projectDir,
-    ignore: ["node_modules/**"],
-    dot: false,
+  const assetDir = path.resolve(projectDir, ".polemic/parchment/public/assets");
+
+  const repository = new Repository({
+    projectDir,
+    adapters: [
+      new ConfigAdapter(),
+      new DocumentsAdapter(),
+      new BibliographyAdapter(),
+      new AssetsAdapter({ assetDir }),
+    ],
   });
 
-  // Try to find a Polemic config file
-  const explorer = cosmiconfig("polemic");
-  const userConfig = await explorer.search(projectDir);
-
-  const docs = files
-    .map((file) => {
-      const filePath = path.resolve(projectDir, file);
-
-      return fs.readFileSync(filePath, { encoding: "utf-8" });
-    })
-    .map((doc) =>
-      parser(doc, {
-        projectDir,
-        assetDir: path.resolve(projectDir, ".polemic/parchment/public/assets"),
-        config: userConfig?.config,
-      })
-    );
+  await repository.initialize();
 
   return {
     props: {
-      docs: await Promise.all(docs),
-      config: R.mergeDeepRight(
-        config.defaultProjectConfig,
-        userConfig?.config ?? {}
-      ),
+      docs: repository.documents?.documents,
+      config: repository.config?.config,
     },
   };
 }

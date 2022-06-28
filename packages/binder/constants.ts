@@ -1,6 +1,6 @@
-import { ProjectConfig, ProjectType } from "../types";
+import { IProjectConfig, ProjectType } from "@polemic/types";
 
-export const defaultProjectConfig: ProjectConfig = {
+export const defaultProjectConfig: IProjectConfig = {
   type: ProjectType.Article,
   sectionNumbering: true,
   figureNumbering: true,
