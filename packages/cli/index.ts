@@ -8,6 +8,9 @@ import createCommand from "./commands/create.js";
 import exportCommand from "./commands/export.js";
 import previewCommand from "./commands/preview.js";
 import updateCommand from "./commands/update.js";
+import loginCommand from "./commands/login.js";
+import whoamiCommand from "./commands/whoami.js";
+import logoutCommand from "./commands/logout.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -48,5 +51,20 @@ program
   .command("update")
   .description("Update your Polemic project.")
   .action(updateCommand);
+
+program
+  .command("login")
+  .description("Log in to your PolemicPub account.")
+  .action(loginCommand);
+
+program
+  .command("logout")
+  .description("Log out current user.")
+  .action(logoutCommand);
+
+program
+  .command("whoami")
+  .description("Show user info of logged in user.")
+  .action(whoamiCommand);
 
 program.parse();
