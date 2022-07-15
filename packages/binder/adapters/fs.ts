@@ -133,6 +133,16 @@ export class ConfigAdapter implements IConfigAdapter {
       R.mergeAll(this.files.map(({ content }) => JSON.parse(content)))
     );
   }
+
+  async update(config: Partial<IProjectConfig>): Promise<this> {
+    this.config = R.mergeDeepRight(this.config!, config);
+
+    await fs.writeJson(this.files[0].uri, this.config);
+
+    this.files[0].content = JSON.stringify(this.config);
+
+    return this;
+  }
 }
 
 /**

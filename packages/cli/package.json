@@ -56,5 +56,8 @@
     "editor",
     "blog",
     "tutorials"
-  ]
+  ],
+  "devDependencies": {
+    "dotenv": "^16.0.1"
+  }
 }

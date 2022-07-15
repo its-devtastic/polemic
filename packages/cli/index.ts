@@ -4,6 +4,7 @@ import path from "path";
 import { program, Option } from "commander";
 import { fileURLToPath } from "url";
 
+import "./helpers/dotenv.js";
 import createCommand from "./commands/create.js";
 import exportCommand from "./commands/export.js";
 import previewCommand from "./commands/preview.js";
@@ -11,6 +12,7 @@ import updateCommand from "./commands/update.js";
 import loginCommand from "./commands/login.js";
 import whoamiCommand from "./commands/whoami.js";
 import logoutCommand from "./commands/logout.js";
+import publishCommand from "./commands/publish.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -46,6 +48,11 @@ program
   .command("preview")
   .description("Preview your Polemic project.")
   .action(previewCommand);
+
+program
+  .command("publish")
+  .description("Publish your project to PolemicPub.")
+  .action(publishCommand);
 
 program
   .command("update")

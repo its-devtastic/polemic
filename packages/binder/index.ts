@@ -9,6 +9,7 @@ import {
 } from "@polemic/types";
 
 export class Repository implements IRepository {
+  name: string;
   projectDir: string;
   config: IConfigAdapter | null = null;
   documents: IDocumentsAdapter | null = null;
@@ -24,6 +25,7 @@ export class Repository implements IRepository {
 
   constructor({ projectDir, adapters }: RepositoryOptions) {
     this.projectDir = projectDir;
+    this.name = projectDir.split("/").slice(-1)[0];
 
     adapters.forEach((adapter) => {
       (this[adapter.type] as any) = adapter;

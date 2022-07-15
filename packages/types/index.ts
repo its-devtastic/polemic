@@ -47,6 +47,7 @@ export interface IBibliographyAdapter extends IAdapter {
 export interface IConfigAdapter extends IAdapter {
   type: "config";
   config: IProjectConfig | null;
+  update(config: Partial<IProjectConfig>): Promise<this>;
 }
 
 /**
@@ -123,5 +124,8 @@ export interface IProjectConfig {
       equationNumbering: string;
     };
     dateTimeFormat: string;
+  };
+  pub?: {
+    projectId: string;
   };
 }
